@@ -1,8 +1,9 @@
+"use strict";
 var ContributionsDAO = require("../data/contributions-dao").ContributionsDAO;
 
 /* The ContributionsHandler must be constructed with a connected db */
 function ContributionsHandler(db) {
-    "use strict";
+    
 
     var contributionsDAO = new ContributionsDAO(db);
 
@@ -21,9 +22,9 @@ function ContributionsHandler(db) {
 
         /*jslint evil: true */
         // Insecure use of eval() to parse inputs
-        var preTax = eval(req.body.preTax);
-        var afterTax = eval(req.body.afterTax);
-        var roth = eval(req.body.roth);
+        var preTax = parseInt(req.body.preTax);
+        var afterTax = parseInt(req.body.afterTax);
+        var roth = parseInt(req.body.roth);
 
         /*
         //Fix for A1 -1 SSJS Injection attacks - uses alternate method to eval
